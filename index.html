@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Celine Chen — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blush: #ffd6e0;
+      --rose: #ffb3c6;
+      --petal: #ff85a1;
+      --cream: #fff5f7;
+      --soft: #ffe4ec;
+      --mauve: #d4899a;
+      --text: #3d2430;
+      --mid: #7a4a57;
+      --light-text: #b07585;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='4' fill='%23ff85a1' opacity='0.8'/%3E%3C/svg%3E") 10 10, auto;
+    }
+
+    /* ── DECORATIVE BLOBS ── */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .blob-1 { width: 500px; height: 500px; background: var(--rose); top: -150px; left: -100px; animation: drift 12s ease-in-out infinite alternate; }
+    .blob-2 { width: 400px; height: 400px; background: var(--blush); bottom: 100px; right: -100px; animation: drift 15s ease-in-out infinite alternate-reverse; }
+    .blob-3 { width: 300px; height: 300px; background: #ffc8d8; top: 50%; left: 30%; animation: drift 18s ease-in-out infinite alternate; }
+
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(30px, 40px) scale(1.1); }
+    }
+
+    /* ── FLOATING HEARTS ── */
+    .hearts-bg {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+    }
+    .heart-float {
+      position: absolute;
+      opacity: 0;
+      font-size: 14px;
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10%  { opacity: 0.4; }
+      90%  { opacity: 0.2; }
+      100% { transform: translateY(-20px) rotate(20deg); opacity: 0; }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(255, 245, 247, 0.75);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 179, 198, 0.3);
+    }
+    .nav-logo {
+      font-family: 'Caveat', cursive;
+      font-size: 1.6rem;
+      color: var(--petal);
+      letter-spacing: 1px;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 2px; background: var(--petal);
+      border-radius: 2px; transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--petal); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ── SECTIONS ── */
+    section {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      padding: 120px 80px 80px;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; text-align: center;
+      padding-top: 140px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--blush);
+      border: 1px solid var(--rose);
+      border-radius: 99px;
+      padding: 6px 18px;
+      font-size: 0.78rem; font-weight: 500;
+      color: var(--mauve); letter-spacing: 0.06em;
+      margin-bottom: 28px;
+      animation: fadeDown 0.8s ease both;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 1.05;
+      color: var(--text);
+      animation: fadeDown 0.9s ease 0.1s both;
+    }
+    .hero-name span { color: var(--petal); font-style: italic; }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--light-text);
+      margin: 16px 0 36px;
+      font-weight: 300; letter-spacing: 0.02em;
+      animation: fadeDown 1s ease 0.2s both;
+    }
+    .hero-pills {
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+      margin-bottom: 40px;
+      animation: fadeDown 1s ease 0.3s both;
+    }
+    .pill {
+      background: var(--soft); border: 1px solid var(--rose);
+      border-radius: 99px; padding: 7px 18px;
+      font-size: 0.82rem; color: var(--mid); font-weight: 500;
+      transition: all 0.2s;
+    }
+    .pill:hover { background: var(--rose); color: white; transform: translateY(-2px); }
+    .hero-cta {
+      display: flex; gap: 14px; justify-content: center;
+      animation: fadeDown 1s ease 0.4s both;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px;
+      border-radius: 99px;
+      font-size: 0.88rem; font-weight: 500;
+      text-decoration: none;
+      transition: all 0.25s;
+      cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: var(--petal); color: white;
+      box-shadow: 0 8px 24px rgba(255, 133, 161, 0.35);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(255, 133, 161, 0.45); }
+    .btn-outline {
+      background: transparent; color: var(--petal);
+      border: 1.5px solid var(--petal);
+    }
+    .btn-outline:hover { background: var(--blush); transform: translateY(-3px); }
+
+    .scroll-hint {
+      margin-top: 60px;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      animation: fadeDown 1.2s ease 0.6s both;
+      color: var(--light-text); font-size: 0.75rem; letter-spacing: 0.1em;
+    }
+    .scroll-arrow {
+      width: 20px; height: 28px; border: 2px solid var(--rose);
+      border-radius: 99px; display: flex; justify-content: center; padding-top: 5px;
+    }
+    .scroll-dot {
+      width: 4px; height: 8px; background: var(--petal); border-radius: 2px;
+      animation: scrollBounce 1.4s ease infinite;
+    }
+    @keyframes scrollBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+    /* ── SECTION HEADERS ── */
+    .section-label {
+      font-family: 'Caveat', cursive;
+      font-size: 1rem; color: var(--petal);
+      letter-spacing: 0.1em; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::before {
+      content: ''; display: block;
+      width: 30px; height: 2px; background: var(--petal); border-radius: 2px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text); margin-bottom: 48px;
+    }
+    .section-title em { color: var(--petal); font-style: italic; }
+
+    /* ── ABOUT ── */
+    #about {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: center; padding-top: 120px;
+    }
+    .about-visual {
+      position: relative;
+      display: flex; justify-content: center; align-items: center;
+    }
+    .about-card {
+      width: 320px; height: 380px;
+      background: linear-gradient(135deg, var(--blush) 0%, var(--rose) 100%);
+      border-radius: 40px 12px 40px 12px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 14px; font-size: 3.5rem;
+      box-shadow: 0 30px 60px rgba(255, 133, 161, 0.2);
+      position: relative; overflow: hidden;
+    }
+    .about-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4) 0%, transparent 60%);
+    }
+    .about-card .emoji { position: relative; z-index: 1; animation: wiggle 3s ease-in-out infinite; }
+    .about-card .emoji:nth-child(2) { animation-delay: 0.5s; }
+    .about-card .emoji:nth-child(3) { animation-delay: 1s; }
+    @keyframes wiggle { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+    .about-deco {
+      position: absolute;
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: var(--rose);
+      top: -15px; right: -15px;
+      box-shadow: 0 0 0 10px var(--blush);
+    }
+    .about-text p {
+      font-size: 1.05rem; line-height: 1.8;
+      color: var(--mid); margin-bottom: 18px;
+    }
+    .about-info-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px;
+    }
+    .info-chip {
+      background: var(--soft);
+      border: 1px solid var(--rose);
+      border-radius: 12px; padding: 12px 16px;
+    }
+    .info-chip .label { font-size: 0.7rem; color: var(--light-text); text-transform: uppercase; letter-spacing: 0.07em; }
+    .info-chip .value { font-size: 0.92rem; font-weight: 500; color: var(--text); margin-top: 2px; }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: transparent; padding-top: 80px; }
+    .exp-container { max-width: 800px; }
+    .exp-item {
+      display: grid; grid-template-columns: 160px 1fr;
+      gap: 0 40px; margin-bottom: 48px;
+      position: relative;
+    }
+    .exp-item::before {
+      content: '';
+      position: absolute; left: 160px; top: 12px; bottom: -48px;
+      width: 2px; background: linear-gradient(to bottom, var(--rose), transparent);
+    }
+    .exp-item:last-child::before { display: none; }
+    .exp-date {
+      font-family: 'Caveat', cursive;
+      font-size: 0.9rem; color: var(--petal);
+      text-align: right; padding-right: 20px; padding-top: 4px;
+    }
+    .exp-dot {
+      position: absolute; left: 153px; top: 8px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--petal); border: 3px solid var(--cream);
+      box-shadow: 0 0 0 3px var(--rose);
+    }
+    .exp-body {
+      background: white; border-radius: 20px;
+      padding: 24px 28px;
+      border: 1px solid var(--blush);
+      box-shadow: 0 4px 20px rgba(255, 133, 161, 0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .exp-body:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(255, 133, 161, 0.15); }
+    .exp-role { font-weight: 600; font-size: 1rem; color: var(--text); }
+    .exp-org {
+      font-family: 'Caveat', cursive;
+      font-size: 1.05rem; color: var(--petal); margin: 4px 0 14px;
+    }
+    .exp-bullets { list-style: none; }
+    .exp-bullets li {
+      font-size: 0.88rem; color: var(--mid); line-height: 1.7;
+      padding-left: 16px; position: relative; margin-bottom: 4px;
+    }
+    .exp-bullets li::before {
+      content: '✿'; position: absolute; left: 0; color: var(--rose); font-size: 0.65rem; top: 4px;
+    }
+
+    /* ── SKILLS ── */
+    #skills { padding-top: 80px; }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .skill-card {
+      background: white;
+      border: 1px solid var(--blush);
+      border-radius: 24px; padding: 28px;
+      transition: all 0.25s;
+      box-shadow: 0 4px 16px rgba(255,133,161,0.06);
+    }
+    .skill-card:hover { transform: translateY(-6px) rotate(-1deg); box-shadow: 0 16px 40px rgba(255,133,161,0.18); }
+    .skill-icon { font-size: 2rem; margin-bottom: 14px; }
+    .skill-name { font-weight: 600; font-size: 0.95rem; color: var(--text); margin-bottom: 6px; }
+    .skill-level { font-size: 0.78rem; color: var(--light-text); margin-bottom: 14px; }
+    .skill-bar { height: 6px; background: var(--soft); border-radius: 99px; overflow: hidden; }
+    .skill-fill {
+      height: 100%; border-radius: 99px;
+      background: linear-gradient(90deg, var(--rose), var(--petal));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .skill-card.visible .skill-fill { transform: scaleX(1); }
+
+    /* ── ORGANIZATIONS ── */
+    #organizations { padding-top: 80px; }
+    .org-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .org-card {
+      background: white; border: 1px solid var(--blush);
+      border-radius: 24px; padding: 28px;
+      transition: all 0.25s;
+      box-shadow: 0 4px 16px rgba(255,133,161,0.06);
+      position: relative; overflow: hidden;
+    }
+    .org-card::after {
+      content: ''; position: absolute;
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--blush); opacity: 0.5;
+      top: -20px; right: -20px;
+    }
+    .org-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(255,133,161,0.15); }
+    .org-title { font-weight: 600; font-size: 1rem; color: var(--text); margin-bottom: 4px; }
+    .org-role {
+      font-family: 'Caveat', cursive;
+      font-size: 0.95rem; color: var(--petal); margin-bottom: 6px;
+    }
+    .org-date { font-size: 0.75rem; color: var(--light-text); margin-bottom: 14px; }
+    .org-bullets { list-style: none; }
+    .org-bullets li {
+      font-size: 0.83rem; color: var(--mid); line-height: 1.6;
+      padding-left: 14px; position: relative; margin-bottom: 3px;
+    }
+    .org-bullets li::before { content: '♡'; position: absolute; left: 0; color: var(--rose); font-size: 0.6rem; top: 3px; }
+
+    /* ── EDUCATION ── */
+    #education { padding-top: 80px; }
+    .edu-cards { display: flex; flex-direction: column; gap: 24px; max-width: 700px; }
+    .edu-card {
+      background: white; border: 1px solid var(--blush);
+      border-radius: 24px; padding: 32px 36px;
+      display: grid; grid-template-columns: 1fr auto;
+      box-shadow: 0 4px 16px rgba(255,133,161,0.06);
+      transition: all 0.25s;
+    }
+    .edu-card:hover { transform: translateX(8px); box-shadow: 0 10px 30px rgba(255,133,161,0.15); }
+    .edu-school { font-weight: 600; font-size: 1.05rem; color: var(--text); margin-bottom: 4px; }
+    .edu-degree { font-family: 'Caveat', cursive; color: var(--petal); font-size: 1.05rem; margin-bottom: 10px; }
+    .edu-details { font-size: 0.83rem; color: var(--mid); line-height: 1.8; }
+    .edu-year {
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem; color: var(--light-text); white-space: nowrap;
+    }
+    .edu-badge {
+      display: inline-block;
+      background: var(--blush); color: var(--mauve);
+      border-radius: 99px; padding: 3px 10px;
+      font-size: 0.72rem; font-weight: 500; margin-top: 8px; margin-right: 4px;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      text-align: center;
+      padding-bottom: 120px;
+    }
+    .contact-box {
+      max-width: 600px; margin: 0 auto;
+      background: white; border: 1px solid var(--blush);
+      border-radius: 40px; padding: 60px;
+      box-shadow: 0 20px 60px rgba(255, 133, 161, 0.12);
+    }
+    .contact-emoji { font-size: 3rem; margin-bottom: 20px; display: block; animation: heartBeat 1.5s ease-in-out infinite; }
+    @keyframes heartBeat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+    .contact-info { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
+    .contact-row {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--soft); border-radius: 14px; padding: 14px 20px;
+      text-decoration: none; color: var(--text);
+      transition: all 0.2s;
+    }
+    .contact-row:hover { background: var(--blush); transform: scale(1.02); }
+    .contact-row .icon { font-size: 1.3rem; }
+    .contact-row .detail { font-size: 0.9rem; font-weight: 500; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      text-align: center; padding: 24px;
+      font-family: 'Caveat', cursive; font-size: 1rem;
+      color: var(--light-text);
+      border-top: 1px solid var(--blush);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      section { padding: 100px 24px 60px; }
+      nav { padding: 16px 24px; }
+      .nav-links { gap: 16px; }
+      #about { grid-template-columns: 1fr; }
+      .about-card { width: 240px; height: 280px; }
+      .exp-item { grid-template-columns: 1fr; }
+      .exp-item::before { display: none; }
+      .exp-date { text-align: left; padding: 0 0 8px 0; }
+      .exp-dot { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Decorative blobs -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<!-- Floating hearts background -->
+<div class="hearts-bg" id="heartsBg"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">✿ Celine</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#organizations">Activities</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-badge">🌸 Open to opportunities</div>
+  <h1 class="hero-name">Hsing-Ning <span>(Celine)</span> Chen</h1>
+  <p class="hero-sub">Human Centered Design & Engineering · UW Seattle · Bilingual Creator</p>
+  <div class="hero-pills">
+    <span class="pill">🎨 UX Design</span>
+    <span class="pill">💡 Leadership</span>
+    <span class="pill">🌏 Bilingual</span>
+    <span class="pill">💃 Dance</span>
+    <span class="pill">📸 Media Production</span>
+    <span class="pill">🌸 Community Builder</span>
+  </div>
+  <div class="hero-cta">
+    <a href="#contact" class="btn btn-primary">✉️ Say Hello</a>
+    <a href="#about" class="btn btn-outline">Learn more →</a>
+  </div>
+  <div class="scroll-hint">
+    <span>scroll</span>
+    <div class="scroll-arrow"><div class="scroll-dot"></div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-visual fade-in">
+    <div class="about-card">
+      <div class="emoji">🌸</div>
+      <div class="emoji">✨</div>
+      <div class="emoji">🎨</div>
+    </div>
+    <div class="about-deco"></div>
+  </div>
+  <div class="about-text fade-in">
+    <div class="section-label">About me</div>
+    <h2 class="section-title">Hi, I'm <em>Celine!</em></h2>
+    <p>I'm a first-year student at the University of Washington pursuing Human Centered Design and Engineering. I'm passionate about designing thoughtful experiences that genuinely help people.</p>
+    <p>Born and raised in Taiwan, I'm a bilingual creator who brings both creativity and care to everything I do — from co-founding a charity organization to leading a school dance team. 🌺</p>
+    <div class="about-info-grid">
+      <div class="info-chip">
+        <div class="label">Based in</div>
+        <div class="value">Seattle, WA</div>
+      </div>
+      <div class="info-chip">
+        <div class="label">Status</div>
+        <div class="value">F-1 Student Visa</div>
+      </div>
+      <div class="info-chip">
+        <div class="label">Major</div>
+        <div class="value">HCDE (Intended)</div>
+      </div>
+      <div class="info-chip">
+        <div class="label">Languages</div>
+        <div class="value">English · Mandarin</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">My journey</div>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-cards">
+    <div class="edu-card fade-in">
+      <div>
+        <div class="edu-school">University of Washington</div>
+        <div class="edu-degree">🎓 B.S. Human Centered Design & Engineering (Intended)</div>
+        <div class="edu-details">Seattle, WA · Expected June 2029</div>
+        <div>
+          <span class="edu-badge">UX Health Member</span>
+        </div>
+      </div>
+      <div class="edu-year">2025–</div>
+    </div>
+    <div class="edu-card fade-in">
+      <div>
+        <div class="edu-school">International Bilingual School at Hsinchu Science Park</div>
+        <div class="edu-degree">🌸 High School Diploma</div>
+        <div class="edu-details">GPA: 4.10 (Weighted) · Hsinchu, Taiwan</div>
+        <div>
+          <span class="edu-badge">High-Honor Roll</span>
+          <span class="edu-badge">AP Scholar Award</span>
+          <span class="edu-badge">Citizenship Award</span>
+        </div>
+        <div style="margin-top:10px; font-size:0.8rem; color:var(--light-text);">AP: Bio · Calc AB · English Lang/Lit · Macro/Micro Econ · Psychology · Stats · World History</div>
+      </div>
+      <div class="edu-year">2021–2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Where I've worked</div>
+  <h2 class="section-title">Experience</h2>
+  <div class="exp-container">
+
+    <div class="exp-item fade-in">
+      <div class="exp-date">May 2023 –<br>Oct 2025</div>
+      <div class="exp-dot"></div>
+      <div class="exp-body">
+        <div class="exp-role">Press Team Editor-in-Chief & Member</div>
+        <div class="exp-org">🎙️ Hsinchu Model United Nations (HSINMUN)</div>
+        <ul class="exp-bullets">
+          <li>Oversaw videography, photography, reporters, and designing teams</li>
+          <li>Organized production of registration, emergency, and conference wrap-up videos</li>
+          <li>Worked closely with faculty advisor to facilitate event planning</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-in">
+      <div class="exp-date">Jan 2026 –<br>Present</div>
+      <div class="exp-dot"></div>
+      <div class="exp-body">
+        <div class="exp-role">Project Member</div>
+        <div class="exp-org">🏥 UX Health, UW</div>
+        <ul class="exp-bullets">
+          <li>Collaborate in a design studio to analyze and evaluate real healthcare scenarios</li>
+          <li>Study user needs and design solutions that support better patient and provider experiences</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ORGANIZATIONS -->
+<section id="organizations">
+  <div class="section-label">Community & leadership</div>
+  <h2 class="section-title">Activities</h2>
+  <div class="org-grid">
+
+    <div class="org-card fade-in">
+      <div class="org-title">🎀 Chariate, IBSH</div>
+      <div class="org-role">President & Secretary</div>
+      <div class="org-date">June 2021 – May 2025</div>
+      <ul class="org-bullets">
+        <li>Co-founded student-run charity org selling creative products (tote bags, keychains, etc.)</li>
+        <li>Raised over $1,000 through product releases & donation drives</li>
+        <li>Created infographics with 5K+ accounts engaged</li>
+        <li>Hosted kindness weeks & mental health awareness months</li>
+      </ul>
+    </div>
+
+    <div class="org-card fade-in">
+      <div class="org-title">🏅 National Honor Society, IBSH</div>
+      <div class="org-role">President & Secretary</div>
+      <div class="org-date">June 2022 – May 2025</div>
+      <ul class="org-bullets">
+        <li>Organized school events including speeches & interviews</li>
+        <li>Represented school for exchange programs & foreign visits</li>
+        <li>Communicated with members about upcoming schedules</li>
+      </ul>
+    </div>
+
+    <div class="org-card fade-in">
+      <div class="org-title">🎓 Bilingual School Student Council, IBSH</div>
+      <div class="org-role">Honor Council Member</div>
+      <div class="org-date">Aug 2020 – May 2025</div>
+      <ul class="org-bullets">
+        <li>Led the MISC committee for bi-annual school dances</li>
+        <li>Organized Spirit Week & hosted New Student Orientation</li>
+        <li>Represented the council in weekly school-wide broadcasts</li>
+      </ul>
+    </div>
+
+    <div class="org-card fade-in">
+      <div class="org-title">🌍 Key Club, IBSH</div>
+      <div class="org-role">Public Relations Head & Member</div>
+      <div class="org-date">Aug 2020 – July 2024</div>
+      <ul class="org-bullets">
+        <li>Maintained club Instagram & designed infographics</li>
+        <li>Organized all promotion for Charity Night (biggest school concert)</li>
+        <li>Attended community service: beach cleanups, giving trips, brownie baking</li>
+      </ul>
+    </div>
+
+    <div class="org-card fade-in">
+      <div class="org-title">💃 D.co (Dance Company), IBSH</div>
+      <div class="org-role">Member</div>
+      <div class="org-date">Aug 2021 – June 2025</div>
+      <ul class="org-bullets">
+        <li>Choreographed and performed for school events</li>
+        <li>Taught new members dances & formations</li>
+        <li>Performed in basketball games, charity events, exchange programs & concerts</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">What I bring</div>
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🎨</div>
+      <div class="skill-name">Figma</div>
+      <div class="skill-level">Basic · UI/UX Design</div>
+      <div class="skill-bar"><div class="skill-fill" style="--w:0.45"></div></div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">📐</div>
+      <div class="skill-name">Adobe InDesign</div>
+      <div class="skill-level">Basic · Layout Design</div>
+      <div class="skill-bar"><div class="skill-fill" style="--w:0.4"></div></div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">☕</div>
+      <div class="skill-name">Java</div>
+      <div class="skill-level">Basic · Programming</div>
+      <div class="skill-bar"><div class="skill-fill" style="--w:0.35"></div></div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🌸</div>
+      <div class="skill-name">English</div>
+      <div class="skill-level">Native · Communication</div>
+      <div class="skill-bar"><div class="skill-fill" style="--w:1.0"></div></div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🏮</div>
+      <div class="skill-name">Mandarin Chinese</div>
+      <div class="skill-level">Native · Communication</div>
+      <div class="skill-bar"><div class="skill-fill" style="--w:1.0"></div></div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">📸</div>
+      <div class="skill-name">Media Production</div>
+      <div class="skill-level">Intermediate · Video & Photo</div>
+      <div class="skill-bar"><div class="skill-fill" style="--w:0.65"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-box fade-in">
+    <span class="contact-emoji">💌</span>
+    <div class="section-label" style="justify-content:center;">Get in touch</div>
+    <h2 class="section-title" style="margin-bottom:12px;">Let's <em>connect!</em></h2>
+    <p style="color:var(--light-text); font-size:0.95rem; line-height:1.7;">Whether you want to chat about design, collaborate on a project, or just say hi — I'd love to hear from you! 🌷</p>
+    <div class="contact-info">
+      <a class="contact-row" href="mailto:celine17@uw.edu">
+        <span class="icon">📧</span>
+        <span class="detail">celine17@uw.edu</span>
+      </a>
+      <div class="contact-row">
+        <span class="icon">📱</span>
+        <span class="detail">(206) 493-8457</span>
+      </div>
+      <div class="contact-row">
+        <span class="icon">📍</span>
+        <span class="detail">Seattle, WA 98195</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  made with lots of 💕 · Hsing-Ning (Celine) Chen · 2025
+</footer>
+
+<script>
+  // Floating hearts
+  const heartsBg = document.getElementById('heartsBg');
+  const symbols = ['♡', '✿', '❀', '⁺', '˚', '✦', '·', '❣'];
+  for (let i = 0; i < 30; i++) {
+    const el = document.createElement('div');
+    el.className = 'heart-float';
+    el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.animationDuration = (Math.random() * 15 + 10) + 's';
+    el.style.animationDelay = (Math.random() * 10) + 's';
+    el.style.fontSize = (Math.random() * 10 + 8) + 'px';
+    el.style.color = ['#ffb3c6','#ffd6e0','#ff85a1','#d4899a'][Math.floor(Math.random()*4)];
+    heartsBg.appendChild(el);
+  }
+
+  // Intersection observer for fade-in & skill bars
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // Animate skill bars
+        e.target.querySelectorAll('.skill-fill').forEach(bar => {
+          const w = bar.style.getPropertyValue('--w') || '0.5';
+          bar.style.transform = `scaleX(${w})`;
+        });
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in, .skill-card').forEach(el => observer.observe(el));
+
+  // Skill bar init (prevent initial flicker)
+  document.querySelectorAll('.skill-fill').forEach(bar => {
+    bar.style.transition = 'transform 1.2s cubic-bezier(0.4,0,0.2,1) 0.3s';
+  });
+</script>
+</body>
+</html>
