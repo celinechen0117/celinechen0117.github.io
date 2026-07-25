@@ -978,6 +978,64 @@
       .section-num { font-size: 3.5rem; left: -10px; top: -25px; }
       .nav-links { display: none; } /* Simplified for mobile */
     }
+
+    /* Makes the button physically "press down" when clicked */
+      .hero-btn:active {
+      transform: translateY(2px) scale(0.98);
+      box-shadow: 0 2px 8px rgba(240, 141, 165, 0.3);
+      transition: all 0.1s ease; /* Faster transition for an instant click feel */
+    }
+
+    /* ── BUTTON STYLES ── */
+    
+    .hero-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 30px; /* Gives it that perfect pill/circular shape */
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    /* The Solid Pink Button */
+    .btn-pink {
+      background-color: #f08da5; /* Soft coquette pink */
+      color: #ffffff;
+      box-shadow: 0 6px 15px rgba(240, 141, 165, 0.3);
+      border: 1px solid #f08da5;
+    }
+
+    .btn-pink:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(240, 141, 165, 0.45);
+    }
+
+    /* The Outline/White Button */
+    .btn-white {
+      background-color: #ffffff;
+      color: #c48b9a; /* Vintage mauve text */
+      box-shadow: 0 6px 15px rgba(220, 160, 175, 0.2);
+      border: 1px solid #fbdce3; /* Delicate blush border */
+    }
+
+    .btn-white:hover {
+      transform: translateY(-3px);
+      background-color: #fff5f7;
+      box-shadow: 0 10px 25px rgba(220, 160, 175, 0.3);
+    }
+
+    /* The Physical "Press Down" Effect */
+    .hero-btn:active {
+      transform: translateY(2px) scale(0.98);
+      box-shadow: 0 2px 8px rgba(240, 141, 165, 0.3);
+      transition: all 0.1s ease; /* Super fast transition for instant click feel */
+    }
+
+
   </style>
 </head>
 <body>
@@ -1320,7 +1378,7 @@
     el.style.fontSize = (Math.random() * 15 + 10) + 'px';
     decorBg.appendChild(el);
   }
-
+ 
   // Fade-in observer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -1329,6 +1387,55 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
+
+<!-- DIVIDER -->
+<div class="elegant-divider fade-in"><div class="divider-bow"></div></div>
+
+<!-- FEATURED PROJECTS SPREAD -->
+<section id="projects">
+  <div class="section-header fade-in">
+    <div class="section-num" style="color: rgba(230, 200, 150, 0.2);">/02</div>
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="section-subtitle">Curated Case Studies</div>
+  </div>
+
+  <div class="projects-container">
+    
+    <!-- PROJECT 1: Alarm Fatigue -->
+    <div class="project-card fade-in">
+      
+      <!-- Visual Left Side -->
+      <div class="project-visual">
+        <div class="antique-frame-molding" style="transform: rotate(-2deg);">
+          <div class="frame-photo-clean" style="display: flex; align-items: center; justify-content: center; font-size: 3rem; background: #fff5f7;">
+            📱hi <!-- Replace with your Mockup -->
+          </div>
+        </div>
+        <!-- Scrapbook Ephemera -->
+        <div class="paperclip" style="top: -15px; right: 20px; transform: rotate(15deg);"></div>
+        <div class="pressed-flower-acc" style="position: absolute; bottom: -10px; left: -10px; font-size: 2rem; transform: rotate(-25deg); z-index: 5;">🥀</div>
+      </div>
+
+      <!-- Text Right Side -->
+      <div class="project-info pattern-ethereal-script">
+        <div class="torn-paper-layer" style="top: -4px; right: -4px; bottom: -4px; left: -4px; z-index: -1; transform: rotate(1deg);"></div>
+        <div class="wax-seal burgundy-seal" style="position: absolute; top: 20px; right: 20px; transform: scale(0.7) rotate(15deg);"></div>
+        
+        <div class="project-category">UX Research • Product Design • Healthcare</div>
+        <h3 class="project-title">Alarm Fatigue</h3>
+        <p class="project-desc">
+          A healthcare-focused mobile application designed to combat alarm fatigue by helping clinicians prioritize, filter, and respond to critical patient alerts more effectively. Focused on improving workflow efficiency, reducing cognitive overload, and enhancing patient safety.
+        </p>
+        
+        <div class="project-actions">
+         <a href="alarm-fatigue.html" class="hero-btn btn-pink">View Case Study</a>
+        </div>
+      </div>
+      
+    </div>
+
+  </div>
+</section>
 
 <!-- DIVIDER -->
 <div class="elegant-divider fade-in"><div class="divider-bow"></div></div>

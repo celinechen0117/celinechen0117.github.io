@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alarm Fatigue — Case Study</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* CORE VARIABLES & SETTINGS (Inherited from main site) */
+    :root {
+      --bg-flow: linear-gradient(135deg, #fff0f4 0%, #fff8fa 40%, #fbe8ec 100%);
+      --ivory: #fffffb; --cream: #fff5f7; --blush: #fbdce3;
+      --rose: #f08da5; --mauve: #c48b9a; --text-dark: #3a262b; --text-mid: #6b4c55; --text-light: #9c7b85;
+      --paper-shadow: 0 15px 35px rgba(220, 160, 175, 0.15), 0 5px 15px rgba(0,0,0,0.03);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg-flow); color: var(--text-dark); font-family: 'DM Sans', sans-serif; overflow-x: hidden; cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='4' fill='%23f08da5' opacity='0.8'/%3E%3C/svg%3E") 10 10, auto; }
+    
+    /* NAV */
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px); border-bottom: 1px dashed var(--blush); }
+    .nav-logo { font-family: 'Pinyon Script', cursive; font-size: 2.2rem; color: var(--rose); text-decoration: none; }
+    .back-link { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--text-mid); text-decoration: none; transition: color 0.3s; }
+    .back-link:hover { color: var(--rose); }
+
+    /* LAYOUT & UTILITIES */
+    .case-study-wrapper { max-width: 1000px; margin: 120px auto 100px; padding: 0 40px; }
+    .cs-section { margin-bottom: 80px; position: relative; }
+    .section-title { font-family: 'Pinyon Script', cursive; font-size: 3.5rem; color: var(--rose); margin-bottom: 20px; line-height: 1.1; }
+    
+    /* VINTAGE PATTERNS (Reused from main site) */
+    .pattern-ethereal-script { background-color: #fffdf8; background-image: radial-gradient(rgba(220,160,175,0.1) 1px, transparent 1px); background-size: 20px 20px; padding: 50px; border-radius: 4px; box-shadow: inset 0 0 30px rgba(220, 160, 175, 0.1), var(--paper-shadow); position: relative; overflow: hidden; }
+    .journal-notebook-spread { background-color: #fdf9f1; background-image: linear-gradient(transparent 96%, #d8d0c3 96%), linear-gradient(90deg, transparent 45px, #d68f9a 45px, #d68f9a 47px, transparent 47px); background-size: 100% 28px, 100% 100%; background-position: 0 4px, 0 0; padding: 40px 40px 40px 80px; position: relative; box-shadow: 4px 8px 20px rgba(0,0,0,0.12); border-radius: 2px 8px 8px 2px; }
+    .pattern-vintage-stripe { background-color: #fffdf8; background-image: repeating-linear-gradient(45deg, rgba(240, 141, 165, 0.06), rgba(240, 141, 165, 0.06) 10px, transparent 10px, transparent 20px); padding: 30px; position: relative; box-shadow: 0 6px 20px rgba(220,160,175,0.15); border: 4px double rgba(212, 175, 55, 0.3); }
+    .torn-paper-layer { position: absolute; background: #fdf9f1; clip-path: polygon(1% 0%, 98% 1%, 100% 99%, 0% 98%, 2% 50%, 0% 20%); filter: drop-shadow(0 6px 12px rgba(0,0,0,0.1)); inset: -5px; z-index: -1; }
+    
+    /* ORNATE FRAME FOR MOCKUPS & IFRAMES */
+    .antique-frame-molding { width: 100%; background: repeating-radial-gradient(circle at 12px 12px, transparent 0, #fffdf8 2px, #e8cdd4 3px, transparent 5px), linear-gradient(135deg, #fffdf8 0%, #ecd1d8 40%, #d4a7b5 100%); background-size: 24px 24px, 100% 100%; padding: 16px; border-radius: 6px; box-shadow: 0 15px 35px rgba(220,160,175,0.3); }
+    .frame-photo-clean { width: 100%; height: 100%; background: var(--cream); box-shadow: inset 0 0 15px rgba(0,0,0,0.1); border-radius: 2px; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+    .frame-photo-clean iframe { width: 100%; height: 600px; border: none; }
+
+    /* TYPOGRAPHY & ELEMENTS */
+    p { font-size: 1.05rem; line-height: 1.9; color: var(--text-mid); margin-bottom: 20px; font-weight: 300; }
+    h4 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--text-dark); margin: 25px 0 10px; }
+    .hero-btn { display: inline-block; padding: 12px 30px; border-radius: 20px; text-decoration: none; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500; transition: all 0.3s; background: var(--rose); color: #fff; box-shadow: 0 5px 15px rgba(240,141,165,0.3); border: none; cursor: pointer; }
+    .hero-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(240,141,165,0.4); }
+    .bullet-list { list-style: none; }
+    .bullet-list li { margin-bottom: 10px; padding-left: 20px; position: relative; font-size: 1.05rem; color: var(--text-mid); }
+    .bullet-list li::before { content: "❀"; position: absolute; left: 0; top: 2px; color: var(--rose); font-size: 0.8rem; }
+    
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .paperclip { position: absolute; width: 24px; height: 55px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c48b9a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48'/%3E%3C/svg%3E"); background-size: contain; background-repeat: no-repeat; z-index: 10; filter: drop-shadow(2px 3px 3px rgba(220, 160, 175, 0.4)); }
+    .washi-tape { position: absolute; width: 100px; height: 30px; background: rgba(251, 220, 227, 0.7); box-shadow: 0 1px 3px rgba(0,0,0,0.05); border-left: 2px dashed rgba(255,255,255,0.5); border-right: 2px dashed rgba(255,255,255,0.5); z-index: 10; backdrop-filter: blur(4px); }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Celine Chen</a>
+  <a href="index.html#projects" class="back-link">← Return to Archives</a>
+</nav>
+
+<div class="case-study-wrapper">
+  
+  <!-- 1. HERO SECTION -->
+  <div class="cs-section fade-in" style="text-align: center; margin-bottom: 60px;">
+    <div style="font-family: 'DM Sans'; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--mauve); margin-bottom: 10px;">UX Health • Product Design</div>
+    <h1 style="font-family: 'Pinyon Script', cursive; font-size: 5rem; color: var(--rose); margin-bottom: 40px; line-height: 1;">Alarm Fatigue</h1>
+    
+    <!-- Clean, frameless, and shadowless image container -->
+    <div style="aspect-ratio: 16/9; max-width: 900px; margin: 0 auto; border-radius: 8px; overflow: hidden;">
+      
+      <img src="hero.png" alt="Alarm Fatigue Hero" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      
+    </div>
+</div>
+
+  <!-- 2. PROJECT META (Postcard Stats) -->
+  <div class="cs-section fade-in">
+    <div class="pattern-vintage-stripe three-col">
+      <div class="torn-paper-layer" style="transform: rotate(1deg);"></div>
+      <div>
+        <h4 style="margin-top: 0;">The Details</h4>
+        <ul class="bullet-list">
+          <li><strong>Role:</strong> Product Designer</li>
+          <li><strong>Timeline:</strong> Jan 2026 – Jun 2026</li>
+          <li><strong>Team:</strong> UX Health Design Studio</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="margin-top: 0;">Toolkit</h4>
+        <ul class="bullet-list">
+          <li>Figma & FigJam</li>
+          <li>UX Research</li>
+          <li>Adobe Illustrator</li>
+        </ul>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <div style="width: 80px; height: 80px; border: 2px solid rgba(107, 76, 85, 0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; text-align: center; letter-spacing: 2px; color: var(--text-mid); transform: rotate(15deg);">UX<br>HEALTH<br>2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. OVERVIEW & PROBLEM (Journal Spread) -->
+  <div class="cs-section fade-in">
+    <div class="journal-notebook-spread" style="transform: rotate(-0.5deg);">
+      <div class="paperclip" style="top: -15px; right: 40px;"></div>
+      
+      <h2 class="section-title" style="font-size: 2.8rem;">The Problem</h2>
+      <p>
+        In modern hospital environments, clinicians are bombarded with hundreds of medical alerts per shift. The vast majority of these alerts are non-actionable, leading to a dangerous psychological phenomenon known as <strong>Alarm Fatigue</strong>.
+      </p>
+      
+      <h4>Key Issues:</h4>
+      <ul class="bullet-list" style="margin-bottom: 20px;">
+        <li><strong>Excessive Alerts:</strong> Constant noise creates a chaotic environment.</li>
+        <li><strong>Clinician Burnout:</strong> Cognitive overload leads to extreme stress.</li>
+        <li><strong>Desensitization:</strong> Caregivers may subconsciously ignore or disable crucial alarms.</li>
+        <li><strong>Patient Safety:</strong> Missed critical alerts can result in severe medical consequences.</li>
+      </ul>
+      <p>
+        Our goal was to design an intelligent, user-centered mobile application to help nurses and doctors filter out the noise, prioritizing actionable alerts efficiently.
+      </p>
+    </div>
+  </div>
+
+  <!-- 4. RESEARCH & DEFINE -->
+  <div class="cs-section fade-in two-col">
+    <div class="pattern-ethereal-script" style="padding: 40px;">
+      <h2 class="section-title" style="font-size: 2.5rem; text-align: center;">Research</h2>
+      <p>We began by conducting deeply empathetic research to understand the daily realities of bedside care.</p>
+      <ul class="bullet-list">
+        <li><strong>User Interviews:</strong> 15+ hours of conversations with ICU and ER nurses.</li>
+        <li><strong>Literature Review:</strong> Audited clinical studies on alarm desensitization.</li>
+        <li><strong>Competitive Analysis:</strong> Evaluated existing hospital pager systems and their UX flaws.</li>
+      </ul>
+    </div>
+    
+    <div class="pattern-ethereal-script" style="padding: 40px; background: #fcf5f7;">
+      <div class="washi-tape" style="top: -10px; left: 50%; transform: translateX(-50%) rotate(2deg);"></div>
+      <h2 class="section-title" style="font-size: 2.5rem; text-align: center;">Define</h2>
+      <p>Synthesizing our research allowed us to clearly map the user journey and define our core problem statement.</p>
+      <ul class="bullet-list">
+        <li><strong>Personas:</strong> Mapped workflows for Charge Nurses and Attending Physicians.</li>
+        <li><strong>Pain Points:</strong> Identified the exact moments of cognitive overload during shift transitions.</li>
+        <li><strong>Design Goals:</strong> Clarity, immediacy, and customization.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 5. IDEATION & WIREFRAMES -->
+  <div class="cs-section fade-in">
+    <h2 class="section-title" style="text-align: center;">Ideation & Wireframes</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
+      From Crazy 8s to low-fidelity wireframes, we focused on establishing a clean information architecture that prioritizes readability in high-stress situations.
+    </p>
+    
+    <div class="three-col">
+      
+      <!-- Image 1 -->
+      <div class="antique-frame-molding" style="padding: 10px; aspect-ratio: 9/16; transform: rotate(-3deg);">
+        <div class="frame-photo-clean">
+          <img src="LowFi.jpeg" alt="Low Fidelity Wireframe" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+      </div>
+      
+      <!-- Image 2 -->
+      <div class="antique-frame-molding" style="padding: 10px; aspect-ratio: 9/16; transform: rotate(1deg);">
+        <div class="frame-photo-clean">
+          <img src="Phone.jpeg" alt="Phone Mockup" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+      </div>
+      
+      <!-- Image 3 -->
+      <div class="antique-frame-molding" style="padding: 10px; aspect-ratio: 9/16; transform: rotate(-2deg);">
+        <div class="frame-photo-clean">
+          <img src="Watch.jpeg" alt="Watch Mockup" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+      </div>    
+    </div>
+
+  <!-- 6. VISUAL DESIGN -->
+  <div class="cs-section fade-in">
+    <div class="journal-notebook-spread" style="transform: rotate(0.5deg); background: #fdfaf6;">
+      <h2 class="section-title" style="font-size: 2.8rem;">Visual Design</h2>
+      <p>
+        The UI system was crafted to be accessible and non-fatiguing. We utilized a highly intentional color palette where red is reserved <em>strictly</em> for life-threatening alerts, utilizing softer hues for general notifications.
+      </p>
+      <div class="two-col" style="margin-top: 30px;">
+        <div>
+          <h4>Typography & Color</h4>
+          <p>High-contrast, legible sans-serif fonts ensure readability at a glance. Dark mode options were included for night shifts.</p>
+        </div>
+        <div>
+          <h4>Component Library</h4>
+          <p>Developed a robust design system in Figma to ensure consistency across the entire application interface.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. INTERACTIVE PROTOTYPE (Figma Embed) -->
+  <div class="cs-section fade-in" id="prototype" style="text-align: center;">
+    <h2 class="section-title">High-Fidelity Prototype</h2>
+    <p style="max-width: 700px; margin: 0 auto 30px;">
+      Explore the finalized interactive prototype below, demonstrating the new alert filtering flow.
+    </p>
+    
+    <div class="antique-frame-molding" style="padding: 20px; background: #fffdf8;">
+      <div class="frame-photo-clean" style="border-radius: 8px;">
+        
+        <!-- FIGMA IFRAME EMBED (Replace the src link with your actual Figma embed link) -->
+        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="600" src="https://embed.figma.com/deck/5wDwhzgxj4iloczFuofNzs/UXH-Crit-Presentation--Copy-?node-id=281-168&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&embed-host=share" allowfullscreen></iframe>
+        
+      </div>
+    </div>
+    
+    <div style="margin-top: 30px;">
+      <a href="https://www.figma.com/deck/5wDwhzgxj4iloczFuofNzs/Alarm-Fatigue-Presentation?node-id=281-168&t=4XsgOC16sK4YW6dr-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" target="_blank" class="hero-btn">Open in Figma ↗</a>
+    </div>
+  </div>
+
+  <!-- 8. USABILITY TESTING & OUTCOME -->
+  <div class="cs-section fade-in two-col">
+    <div>
+      <h2 class="section-title" style="font-size: 2.5rem;">Usability Testing</h2>
+      <p>
+        We tested the high-fidelity prototype with 5 working clinicians. Key findings led us to increase the tap-target sizes on critical buttons and introduce a "swipe-to-acknowledge" gesture to prevent accidental dismissals.
+      </p>
+    </div>
+    <div>
+      <h2 class="section-title" style="font-size: 2.5rem;">Final Outcome</h2>
+      <p>
+        The final application successfully reduced simulated cognitive load by prioritizing critical alerts and batching non-essential notifications. 
+      </p>
+    </div>
+  </div>
+
+  <!-- 9. REFLECTION -->
+  <div class="cs-section fade-in">
+    <div class="pattern-ethereal-script" style="text-align: center;">
+      <div class="wax-seal" style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%);"></div>
+      <h2 class="section-title" style="margin-top: 20px;">Reflection</h2>
+      <p style="max-width: 700px; margin: 0 auto;">
+        Designing for healthcare requires an intense level of empathy and a deep understanding of high-stakes environments. This project taught me how to balance complex data architecture with clean, calming visual design. In the future, I hope to explore how machine learning can further predict and prevent false alarms.
+      </p>
+      <div style="font-family: 'Caveat', cursive; font-size: 2rem; color: var(--rose); margin-top: 30px;">End of Archive</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
