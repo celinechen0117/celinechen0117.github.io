@@ -265,193 +265,131 @@
       .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     }
 
-    /* ── PSYCHE-CODED VINTAGE HEIRLOOM SPREAD ── */
-    
-    #about {
-      padding-top: 120px;
-    }
-    
-    .valentine-spread {
-      display: grid; 
-      grid-template-columns: 1fr 1.3fr; 
-      gap: 60px;
-      align-items: center;
-    }
+   /* ── ABOUT ME: HERO MATCHING STYLE ── */
 
-    /* 1. The Ethereal Canvas */
-    .album-canvas {
-      position: relative; width: 100%; max-width: 550px; height: 680px; margin: 0 auto;
-    }
-    .lace-overlay-bg {
-      position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0 A20 20 0 0 1 40 20 A20 20 0 0 1 20 40 A20 20 0 0 1 0 20 A20 20 0 0 1 20 0 Z' fill='transparent' stroke='%23fbe8ec' stroke-width='0.5'/%3E%3C/svg%3E");
-      opacity: 0.6; z-index: -1; pointer-events: none;
-    }
+.about-hero-section {
+  padding: 20px 20px 100px 20px; /* 20px top, 20px right, 100px bottom, 20px left */
+  max-width: 1100px;
+  margin: 0 auto;
+}
 
-    /* 2. Majestic Unobstructed Heart Frames */
-    .heart-wrap {
-      position: absolute;
-      /* Heavy drop shadow on the wrapper container */
-      filter: drop-shadow(0 25px 40px rgba(220,160,175,0.35)) drop-shadow(0 10px 15px rgba(0,0,0,0.1));
-      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-      --rotation: 0deg; 
-      transform: rotate(var(--rotation));
-    }
-    .heart-wrap:hover {
-      transform: scale(1.05) rotate(0deg);
-      z-index: 20 !important;
-    }
+.about-hero-container {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
 
-    /* Universal Heart Mask applied to BOTH trim and photo */
-    .heart-mask {
-      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 92.5C50 92.5 10 65 10 32.5 10 15 25 10 37.5 15c5 2 9.5 7.5 12.5 12.5 3-5 7.5-10.5 12.5-12.5C75 10 90 15 90 32.5 90 65 50 92.5 50 92.5z'/%3E%3C/svg%3E");
-      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 92.5C50 92.5 10 65 10 32.5 10 15 25 10 37.5 15c5 2 9.5 7.5 12.5 12.5 3-5 7.5-10.5 12.5-12.5C75 10 90 15 90 32.5 90 65 50 92.5 50 92.5z'/%3E%3C/svg%3E");
-      -webkit-mask-size: 100% 100%;
-      -webkit-mask-repeat: no-repeat;
-      -webkit-mask-position: center;
-    }
+/* Visual Side */
+.about-visual-side {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
 
-    /* The Ornate Outer Trim (Moves decorations to the outside) */
-    .psyche-outer-trim {
-      width: 100%; height: 100%;
-      /* Complex background to simulate carved Victorian molding */
-      background: 
-        radial-gradient(circle at 10px 10px, transparent 65%, rgba(255,255,255,0.9) 70%),
-        radial-gradient(circle at 50% 50%, #fffdf8 0%, #fff0f4 80%, #fbdce3 100%);
-      background-size: 20px 20px, 100% 100%;
-      
-      /* THIS padding creates the thick frame border around the photo */
-      padding: 28px; 
-      display: flex; align-items: center; justify-content: center;
-    }
+.about-image-card {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4/5;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 20px 40px rgba(220, 160, 175, 0.18);
+  border: 1px solid rgba(251, 220, 227, 0.6);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
 
-    /* Completely Clean Inner Photo Container */
-    .heart-photo-clean {
-      width: 100%; height: 100%;
-      background: var(--cream);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 4rem; object-fit: cover;
-      transform: rotate(calc(var(--rotation) * -1)); 
-      transition: transform 0.6s ease;
-      /* Notice there are NO borders, NO box shadows, and NO dots inside here */
-    }
+.about-image-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 50px rgba(220, 160, 175, 0.28);
+}
 
-    /* Frame Sizes */
-    .main-heart { width: 380px; height: 380px; top: 0px; left: -20px; }
-    .tucked-heart { width: 280px; height: 280px; }
-    .mini-heart { width: 220px; height: 220px; }
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-    /* 3. High-Contrast Authentic Postal Elements */
-    .cupid-stamp.high-contrast {
-      position: absolute; width: 60px; height: 70px;
-      background: #fdf9f4; /* Aged paper color */
-      border: 1px solid #dcd3d6;
-      /* Sharp Scalloped Edges */
-      -webkit-mask-image: radial-gradient(circle at 4px 4px, transparent 4px, black 4.5px);
-      -webkit-mask-position: -4px -4px;
-      -webkit-mask-size: 12px 12px;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
-      display: flex; align-items: center; justify-content: center;
-    }
-    
-    /* Engraved print area inside the stamp */
-    .stamp-engraving {
-      width: calc(100% - 10px); height: calc(100% - 10px);
-      border: 1.5px solid #6b4c55; /* Dark ink outline */
-      margin: 5px; 
-      display: flex; align-items: center; justify-content: center;
-      background: #fdf9f4;
-      box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 3.5px #6b4c55;
-    }
+/* Text Side */
+.about-text-side {
+  flex: 1.2;
+}
 
-    .mini-stamp { width: 45px; height: 55px; -webkit-mask-size: 10px 10px; }
-    
-    /* Darker, defined cancellation lines */
-    .cancellation-lines {
-      position: absolute; top: 25px; left: -40px; width: 120px; height: 25px;
-      background: repeating-linear-gradient(to bottom, transparent, transparent 3px, rgba(40, 30, 35, 0.7) 3px, rgba(40, 30, 35, 0.7) 4.5px);
-      transform: rotate(-8deg); z-index: 6; pointer-events: none;
-      mix-blend-mode: multiply;
-    }
-    .mini-cancel { width: 80px; left: -30px; }
+.about-category-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #c48b9a; /* Vintage mauve */
+  margin-bottom: 12px;
+  font-weight: 500;
+}
 
-    .authentic-postmark {
-      position: absolute; width: 80px; height: 80px;
-      border: 2px solid rgba(107, 76, 85, 0.5); border-radius: 50%;
-      color: rgba(107, 76, 85, 0.8);
-      display: flex; align-items: center; justify-content: center; text-align: center;
-      text-transform: uppercase; font-size: 0.65rem; font-family: 'DM Sans', sans-serif; letter-spacing: 2px;
-      z-index: 4; pointer-events: none; mix-blend-mode: multiply;
-    }
-    .authentic-postmark::before { content: ''; position: absolute; inset: 5px; border: 1px dashed rgba(107, 76, 85, 0.4); border-radius: 50%; }
+.about-hero-title {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 4.5rem;
+  color: #f08da5; /* Soft rose */
+  margin-bottom: 24px;
+  line-height: 1;
+}
 
-    /* 4. Varied Stationery Paper Patterns (Pure CSS) */
-    
-    /* A. Ethereal Script (Love Letter - Unchanged) */
-    .pattern-ethereal-script {
-      background-color: #fffdf8;
-      background-image: radial-gradient(rgba(220,160,175,0.1) 1px, transparent 1px);
-      background-size: 20px 20px;
-      padding: 40px 35px 35px; border-radius: 4px;
-      box-shadow: inset 0 0 30px rgba(220, 160, 175, 0.1), var(--paper-shadow);
-      position: relative; overflow: hidden;
-    }
-    .pattern-ethereal-script::before {
-      content: 'Amor et Psyche...'; position: absolute; top: 30%; left: -20%;
-      font-family: 'Pinyon Script', cursive; font-size: 6rem;
-      color: rgba(220,160,175,0.08); transform: rotate(-15deg);
-      pointer-events: none; white-space: nowrap;
-    }
+.about-lead-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #4a3b3e;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
 
-    /* B. Notebook Journal Spread (Replaces Lace Floral) */
-    .journal-notebook-spread {
-      background-color: #fdf9f1;
-      /* Repeating Lined Notebook Paper with Red Margin */
-      background-image: 
-        linear-gradient(transparent 96%, #d8d0c3 96%), /* Blue/gray lines */
-        linear-gradient(90deg, transparent 45px, #d68f9a 45px, #d68f9a 47px, transparent 47px); /* Red margin */
-      background-size: 100% 28px, 100% 100%;
-      background-position: 0 4px, 0 0;
-      padding: 25px 20px 30px 65px; /* Pushes text past the red margin */
-      position: relative;
-      box-shadow: 2px 4px 15px rgba(0,0,0,0.08);
-      border-radius: 2px 8px 8px 2px;
-      transform: rotate(-1.5deg);
-    }
-    .handwritten-title {
-      font-family: 'Caveat', cursive; font-size: 1.8rem; color: #4a3b40;
-      margin-top: 0; margin-bottom: 8px;
-    }
-    .journal-bullets { list-style: none; padding: 0; margin: 0; }
-    .journal-bullets li {
-      font-family: 'Caveat', cursive; font-size: 1.15rem;
-      line-height: 28px; /* Perfectly aligns with the ruled background lines! */
-      color: #3b3034; margin-bottom: 0; position: relative;
-    }
-    /* Folded Page Corner */
-    .page-fold {
-      position: absolute; bottom: 0; right: 0; width: 35px; height: 35px;
-      background: linear-gradient(135deg, transparent 50%, #e8dec8 50%);
-      border-radius: 0 0 8px 0; box-shadow: -2px -2px 4px rgba(0,0,0,0.06);
-    }
+.about-body-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #6b4c55;
+  margin-bottom: 28px;
+}
 
-    /* C. Delicate Vintage Stripes (Postcard Stats) */
-    .pattern-vintage-stripe {
-      background-color: #fffdf8;
-      background-image: repeating-linear-gradient(45deg, rgba(240, 141, 165, 0.06), rgba(240, 141, 165, 0.06) 10px, transparent 10px, transparent 20px);
-      padding: 25px; position: relative; overflow: hidden;
-      box-shadow: 0 6px 20px rgba(220,160,175,0.15);
-      border-right: 4px double rgba(212, 175, 55, 0.3);
-      transform: rotate(1.5deg);
-    }
+/* Pills / Badges */
+.about-pills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 35px;
+}
 
-    /* Text Formatting */
-    .about-text { position: relative; z-index: 10; display: flex; flex-direction: column; gap: 20px; }
-    .script-greeting { font-family: 'Pinyon Script', cursive; font-size: 2.2rem; color: var(--mauve); margin-left: 10px; position: relative; z-index: 10; }
-    .pattern-ethereal-script p { font-size: 1.05rem; line-height: 1.9; color: var(--text-mid); margin-left: 10px; font-weight: 300; position: relative; z-index: 10; }
-    .signature-line { font-family: 'Caveat', cursive; font-size: 1.8rem; color: var(--rose); text-align: right; margin-top: 15px; transform: rotate(-3deg); position: relative; z-index: 10; }
-    .editorial-feature-details { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 10px; }
-    .pattern-vintage-stripe span { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; text-transform: uppercase; color: var(--mauve); letter-spacing: 0.1em; display: inline-block; width: 85px; }
+.about-pill {
+  background-color: #ffffff;
+  color: #c48b9a;
+  border: 1px solid #fbdce3;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(220, 160, 175, 0.1);
+}
+
+.about-cta-wrapper {
+  margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 850px) {
+  .about-hero-container {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .about-pills-grid {
+    justify-content: center;
+  }
+  
+  .about-hero-title {
+    font-size: 3.8rem;
+  }
+}
 
     /* Mobile adjustments */
     @media (max-width: 900px) {
@@ -1035,6 +973,29 @@
       transition: all 0.1s ease; /* Super fast transition for instant click feel */
     }
 
+    /* ── IMAGE DIVIDER ── */
+    .image-divider {
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto; /* Much tighter! Just 30px of space top and bottom */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+    
+    .image-divider img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      opacity: 0.85; /* Softens the image slightly to fit the scrapbook vibe */
+    }
+    .project-info { 
+  background-color: #ffffff; /* Clean white background */
+  padding: 40px; 
+  border-radius: 12px; /* Soft rounded corners */
+  box-shadow: 0 15px 35px rgba(220, 160, 175, 0.15); /* Delicate shadow to lift it off the page */
+  position: relative; 
+}
 
   </style>
 </head>
@@ -1102,164 +1063,75 @@
         <!-- Background Polaroid -->
         <div class="tucked-polaroid">
           <div class="washi-tape corner" style="width: 60px;"></div>
-          <!-- You can put a secondary small image here later -->
+          <img src="Photo2.jpeg" alt="Portrait of Celine Chen" style="width: 100%; height: 100%; object-fit: cover; display: block;">
           <div style="background: #fdf5f7; width: 100%; height: 130px; display: flex; justify-content: center; align-items: center; border: 1px solid var(--blush);">🎨</div>
         </div>
 
         <!-- Main Ornate Frame -->
         <div class="vintage-frame">
           <div class="paperclip" style="top: -15px; left: -10px; transform: rotate(-45deg);"></div>
-          
-          <!-- Replace this div with your actual <img> tag when you have your portrait! -->
-          <div class="frame-image">
-            🌸
+          <img src="Photo.jpg" alt="Portrait of Celine Chen" style="width: 100%; height: 100%; object-fit: cover; display: block;">
           </div>
         </div>
-
-        <!-- Scrapbook sticky note -->
-        <div class="handwritten-note">open to work!</div>
       </div>
-
     </div>
   </div>
 </section>
 
-<div class="elegant-divider divider-fade fade-in">
-  <!-- Draping Pearl Strands -->
-  <div class="pearl-drape outer-left"></div>
-  <div class="pearl-drape inner-left"></div>
-  <div class="pearl-drape inner-right"></div>
-  <div class="pearl-drape outer-right"></div>
-  
-  <!-- Tiny Scrapbook Embellishments -->
-  <div class="divider-decor dec-1">✦</div>
-  <div class="divider-decor dec-2">🌸</div>
-  <div class="divider-decor dec-3">🦋</div>
-  <div class="divider-decor dec-4">✨</div>
-
-  <!-- The Satin Bow -->
-  <div class="divider-bow"></div>
+<!-- IMAGE DIVIDER -->
+<div class="image-divider fade-in">
+  <img src="divider.png" alt="Decorative divider"> <img src="divider.png" alt="Decorative divider"> 
 </div>
 
-<!-- ABOUT (Psyche & Cupid Vintage Heirloom Spread) -->
-<section id="about">
-  <div class="section-header fade-in">
-    <div class="section-num" style="color: rgba(230, 200, 150, 0.2);">/01</div>
-    <h2 class="section-title">About Me</h2>
-    <div class="section-subtitle">A Timeless Keepsake</div>
-  </div>
-
-  <div class="about-grid valentine-spread">
+<!-- ABOUT ME SECTION (HERO-STYLE) -->
+<section id="about" class="about-hero-section fade-in">
+  <div class="about-hero-container">
     
-    <!-- LEFT COLUMN: Ethereal Canvas (Unobstructed Hearts) -->
-    <div class="album-canvas fade-in">
-      
-      <!-- Celestial & Classical Canvas Textures -->
-      <div class="lace-overlay-bg"></div>
-      
-      <!-- Pearl Garlands Draped in the Background -->
-      <div class="pearl-drape outer-left" style="top: 8%; left: -20px; width: 200px; z-index: 0; border-color: #fffdf8;"></div>
-      <div class="pearl-drape inner-left" style="top: 25%; left: 10px; width: 150px; z-index: 0; border-color: #fbdce3;"></div>
-
-      <!-- Psyche's Butterflies & Celestial Details (Background) -->
-      <div class="divider-decor" style="top: 15%; left: -40px; font-size: 1.8rem; transform: rotate(-15deg); z-index: 1;">🦋</div>
-      <div class="divider-decor" style="bottom: 80px; right: 10px; font-size: 1.5rem; color: #d4af37; z-index: 1;">✨</div>
-      <div class="divider-decor" style="top: 60%; left: -20px; font-size: 1.2rem; transform: rotate(10deg); color: rgba(220,160,175,0.6); z-index: 1;">🕊️</div>
-
-      <!-- PHOTO 1: The Majestic Psyche Heart (Pristine & Unobstructed) -->
-      <div class="heart-wrap main-heart" style="--rotation: -3deg; z-index: 5;">
-        <div class="psyche-heart-frame">
-          <div class="heart-inner-border">
-            <div class="heart-photo">🌸</div>
-          </div>
-        </div>
+    <!-- Left Side: Clean Portrait Visual -->
+    <div class="about-visual-side">
+      <div class="about-image-card">
+        <!-- Replace portrait.jpg with your photo -->
+        <img src="portrait.png" alt="portrait" class="about-photo">
       </div>
-
-      <!-- PHOTO 2: The Ethereal Tucked Heart -->
-      <div class="heart-wrap tucked-heart" style="--rotation: 6deg; top: 220px; right: -40px; z-index: 3;">
-        <div class="psyche-heart-frame">
-          <div class="heart-inner-border">
-            <div class="heart-photo" style="background: #fff5f7;">🏛️</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PHOTO 3: The Golden Keepsake Heart -->
-      <div class="heart-wrap mini-heart" style="--rotation: -8deg; bottom: 10px; left: -10px; z-index: 6;">
-        <div class="psyche-heart-frame">
-          <div class="heart-inner-border" style="border-color: #d4af37;">
-            <div class="heart-photo" style="background: #fffdf8;">🦢</div>
-          </div>
-        </div>
-      </div>
-
     </div>
 
-    <!-- RIGHT COLUMN: The Heirloom Letters (Varied Stationery) -->
-    <div class="about-text fade-in">
+    <!-- Right Side: Text & Details -->
+    <div class="about-text-side">
+      <div class="about-category-tag">UX Research & Product Design</div>
+      <h2 class="about-hero-title">About Me</h2>
       
-      <!-- VINTAGE LETTER: Ethereal Script Pattern -->
-      <div class="love-letter-feature pattern-ethereal-script">
-        
-        <!-- Cupid Postage Stamp with Cancellation Marks -->
-        <div class="cupid-stamp" style="position: absolute; top: 20px; right: 25px; transform: rotate(4deg); z-index: 5;">
-          <div class="stamp-inner" style="font-size: 1.6rem; color: #8b6b74;">👼</div>
-          <!-- Authentic cancellation lines overlay -->
-          <div class="cancellation-lines"></div>
-        </div>
-        <div class="authentic-postmark" style="top: 5px; right: 45px; transform: rotate(-12deg);">
-          <span>ROMA<br>AMOR<br>VINCIT</span>
-        </div>
-        
-        <div class="script-greeting">Dearest reader,</div>
-        <h3 class="hero-name" style="font-size: 2.2rem; line-height: 1.1; margin-top: 10px; margin-bottom: 20px;">
-          Meet <em style="color: var(--rose);">Celine</em> Chen
-        </h3>
-        <p>
-          I am a first-year student at the University of Washington pursuing Human Centered Design and Engineering (HCDE). I'm deeply passionate about designing thoughtful, elegant experiences that genuinely help people.
-        </p>
-        <p style="margin-top: 15px;">
-          Originally from Taiwan, I am a bilingual creator who brings both creativity and care to everything I do—from co-founding a charity organization to leading a school dance team. I believe the best design is crafted with empathy, just like a timeless handwritten letter.
-        </p>
-        <div class="signature-line">Yours truly, Celine</div>
+      <p class="about-lead-text">
+        I’m a Taiwanese HCDE student who believes the best technology feels a lot like helping a friend—intuitive, thoughtful, and deeply empathetic.
+      </p>
+      
+      <p class="about-body-text">
+        Growing up with parents in the tech industry, I always looked up to them as my ultimate role models. They taught me early on that behind every complex system is a chance to make someone's life a little bit easier. Today, I channel that inspiration into crafting human-centered digital experiences, blending my lifelong love for technology with a genuine desire to help others. 
+      </p>
+
+      <p class="about-body-text" style="margin-top: -15px;">
+        But even the most analytical minds need a little grounding. Alongside my wireframes and prototypes, I have a deep appreciation for essential oils. In fact, you will almost always find me carrying a bit of rosemary—it is my personal symbol of perseverance, and a comforting reminder to stay focused and resilient through every design challenge.
+      </p>
+
+      <!-- Skill & Interest Pills -->
+      <div class="about-pills-grid">
+        <span class="about-pill">✨ Interaction Design</span>
+        <span class="about-pill">🔬 User Research</span>
+        <span class="about-pill">⌚ Wearable Tech</span>
+        <span class="about-pill">🪻 Essential Oils</span>
       </div>
 
-      <!-- SIDE-BY-SIDE FEATURE BOXES -->
-      <div class="editorial-feature-details">
-        
-        <!-- SIDEBAR 1: Fun Facts (Faded Floral/Damask Pattern) -->
-        <div class="journal-card pattern-lace-floral">
-          <div class="wax-seal" style="position: absolute; top: -20px; left: -10px; transform: scale(0.8) rotate(-15deg);"></div>
-          <h4 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-top: 0; color: var(--text-dark); border-bottom: 1px dashed rgba(212, 175, 55, 0.4); padding-bottom: 8px; margin-bottom: 15px;">
-            Psyche's Journey
-          </h4>
-          <ul class="exp-bullets" style="padding-left: 10px;">
-            <li style="font-size: 0.85rem; margin-bottom: 10px;">🦋 Exploring Hsinchu and Seattle with a camera.</li>
-            <li style="font-size: 0.85rem; margin-bottom: 10px;">🦋 Inspired by Greco-Roman art and ballet.</li>
-            <li style="font-size: 0.85rem;">🦋 Aspiring calligrapher and floral design enthusiast.</li>
-          </ul>
-        </div>
-
-        <!-- SIDEBAR 2: Stats (Delicate Vintage Stripes) -->
-        <div class="postcard-stats pattern-vintage-stripe">
-          <div class="cupid-stamp mini-stamp" style="position: absolute; top: 10px; right: 10px;">
-            <div class="stamp-inner" style="font-size: 0.9rem;">🏹</div>
-          </div>
-          <div class="cancellation-lines mini-cancel" style="top: 20px; right: -5px;"></div>
-          
-          <div class="org-date" style="color: var(--text-dark); font-size: 0.9rem; line-height: 1.8; list-style: none; position: relative; z-index: 2; margin-top: 15px;">
-            <li style="border-bottom: 1px solid rgba(220,160,175,0.2); padding-bottom: 5px; margin-bottom: 5px;"><span>Major:</span> HCDE @ UW</li>
-            <li style="border-bottom: 1px solid rgba(220,160,175,0.2); padding-bottom: 5px; margin-bottom: 5px;"><span>Class of:</span> 2028</li>
-            <li style="border-bottom: 1px solid rgba(220,160,175,0.2); padding-bottom: 5px; margin-bottom: 5px;"><span>Languages:</span> English, Mandarin</li>
-            <li><span>Interests:</span> UX, Social Impact</li>
-          </div>
-        </div>
-        
+      <!-- Action Button -->
+      <div class="about-cta-wrapper">
+        <a href="#contact" class="hero-btn btn-pink">Get in Touch 💌</a>
       </div>
     </div>
-    
+
   </div>
 </section>
+<!-- IMAGE DIVIDER -->
+<div class="image-divider fade-in">
+  <img src="divider.png" alt="Decorative divider"> <img src="divider.png" alt="Decorative divider"> 
+</div>
 
 <!-- Experience Section -->
 <section id="experience">
@@ -1274,7 +1146,7 @@
     <!-- NYCU Role -->
     <div class="exp-card fade-in">
       <div class="washi-tape"></div>
-      <div class="exp-org">🔬 Networking & Mobile Systems Lab</div>
+      <div class="exp-org">Networking & Mobile Systems Lab</div>
       <div class="exp-title">Visiting Undergraduate Student Researcher @ NYCU</div>
       <div class="exp-date">Hsinchu, Taiwan | July 2026 – Present</div>
       <ul>
@@ -1285,7 +1157,7 @@
 
     <!-- UX Health Role -->
     <div class="exp-card fade-in">
-      <div class="exp-org">🏥 UX Health @ UW</div>
+      <div class="exp-org">UX Health @ UW</div>
       
       <div style="margin-top: 15px;">
         <div class="exp-title" style="font-size: 1.2rem;">Junior Officer</div>
@@ -1305,7 +1177,10 @@
   </div>
 </section>
 
-<div class="ribbon-divider"><span>🎀</span></div>
+<!-- IMAGE DIVIDER -->
+<div class="image-divider fade-in">
+  <img src="divider.png" alt="Decorative divider"> <img src="divider.png" alt="Decorative divider"> 
+</div>
 
 <!-- Activities Section -->
 <section id="activities">
@@ -1316,9 +1191,19 @@
   </div>
 
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+
+    <div class="paper-card fade-in" style="transform: rotate(2deg);">
+      <div class="exp-title">Chi Sigma Alpha National Sorority Inc, @ UW </div>
+      <div class="exp-org" style="font-size: 1.5rem;">Banquet Director and Active</div>
+      <div class="exp-date">May 2025 – Present</div>
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="font-size: 0.9rem; margin-bottom: 8px;">🌸 Oversaw all event logistics, including catering, seating arrangements, and programming schedules.</li>
+        <li style="font-size: 0.9rem; margin-bottom: 8px;">🌸 Negotiated contracts with local venues and vendors to optimize the event budget.</li>
+      </ul>
+    </div>
     
     <div class="paper-card fade-in" style="transform: rotate(-1deg);">
-      <div class="exp-title">Chariate, IBSH</div>
+      <div class="exp-title">Chariate @ IBSH</div>
       <div class="exp-org" style="font-size: 1.5rem;">President & Secretary</div>
       <div class="exp-date">June 2021 – May 2025</div>
       <ul style="list-style: none; padding-left: 0;">
@@ -1328,19 +1213,57 @@
     </div>
 
     <div class="paper-card fade-in" style="transform: rotate(2deg);">
-      <div class="exp-title">Bilingual School Student Council</div>
+      <div class="exp-title">Bilingual School Student Council @ IBSH</div>
       <div class="exp-org" style="font-size: 1.5rem;">Honor Council Member</div>
       <div class="exp-date">Aug 2020 – May 2025</div>
       <ul style="list-style: none; padding-left: 0;">
         <li style="font-size: 0.9rem; margin-bottom: 8px;">🌸 Led the MISC committee for bi-annual school dances.</li>
         <li style="font-size: 0.9rem; margin-bottom: 8px;">🌸 Organized Spirit Week & hosted New Student Orientation.</li>
+        <li style="font-size: 0.9rem; margin-bottom: 8px;">🌸 Represented the council in weekly school-wide broadcasts.</li>
       </ul>
     </div>
+
+    <div class="paper-card fade-in" style="transform: rotate(2deg);">
+      <div class="exp-title">National Honor Society @ IBSH</div>
+      <div class="exp-org" style="font-size: 1.5rem;">President & Secretary</div>
+      <div class="exp-date">Jun 2022 – May 2025</div>
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="font-size: 0.9rem; margin-bottom: 8px;">🌸 Organized for school events (Host guests during speeches & help out with interviews).</li>
+        <li style="font-size: 0.9rem; margin-bottom: 8px;">🌸 Represent the school for exchange programs & foreign visits. </li>
+        <li style="font-size: 0.9rem; margin-bottom: 8px;">🌸 Communicated with members about upcoming schedules.</li>
+      </ul>
+    </div>
+
+    <div class="paper-card fade-in" style="transform: rotate(2deg);">
+      <div class="exp-title">Key Club @ IBSH</div>
+      <div class="exp-org" style="font-size: 1.5rem;">Public Relations Head and Member</div>
+      <div class="exp-date">Aug 2020 – July 2024</div>
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="font-size: 0.9rem; margin-bottom: 8px;">🌸 PR Head: Maintained the club’s instagram page & made infographics.</li>
+        <li style="font-size: 0.9rem; margin-bottom: 8px;">🌸 AD Head: Organized all forms of promotion for Charity Night (The biggest concert hosted by our school).</li>
+        <li style="font-size: 0.9rem; margin-bottom: 8px;">🌸 Attended community service trips: Beach cleanups, the giving trip, & brownie baking.</li>
+      </ul>
+    </div>
+
+    <div class="paper-card fade-in" style="transform: rotate(2deg);">
+      <div class="exp-title">D.co (Dance Company) @ IBSH</div>
+      <div class="exp-org" style="font-size: 1.5rem;">Member</div>
+      <div class="exp-date">Aug 2021 – Jun 2025</div>
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="font-size: 0.9rem; margin-bottom: 8px;">🌸 A school dance team that choreographs and performs for events.</li>
+        <li style="font-size: 0.9rem; margin-bottom: 8px;">🌸 Taught new members dances & formations.</li>
+        <li style="font-size: 0.9rem; margin-bottom: 8px;">🌸 Performed in basketball games, charity events, exchange programs, & concerts.</li>
+      </ul>
+    </div>
+
 
   </div>
 </section>
 
-<div class="ribbon-divider"><span>✨</span></div>
+<!-- IMAGE DIVIDER -->
+<div class="image-divider fade-in">
+  <img src="divider.png" alt="Decorative divider"> <img src="divider.png" alt="Decorative divider"> 
+</div>
 
 <!-- Skills Section -->
 <section id="skills" style="padding-bottom: 120px;">
@@ -1354,9 +1277,11 @@
     <div class="washi-tape" style="width: 150px;"></div>
     <div class="skills-flex">
       <div class="skill-ribbon">Figma (UI/UX)</div>
-      <div class="skill-ribbon">Python (Machine Learning)</div>
+      <div class="skill-ribbon">Python</div>
       <div class="skill-ribbon">Adobe InDesign</div>
       <div class="skill-ribbon">Java</div>
+      <div class="skill-ribbon">HTML</div>
+      <div class="skill-ribbon">Machine Learning</div>
       <div class="skill-ribbon">Media Production</div>
       <div class="skill-ribbon">Fluent English</div>
       <div class="skill-ribbon">Native Mandarin Chinese</div>
@@ -1388,13 +1313,15 @@
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 
-<!-- DIVIDER -->
-<div class="elegant-divider fade-in"><div class="divider-bow"></div></div>
+<!-- IMAGE DIVIDER -->
+<div class="image-divider fade-in">
+  <img src="divider.png" alt="Decorative divider"> <img src="divider.png" alt="Decorative divider"> 
+</div>
 
 <!-- FEATURED PROJECTS SPREAD -->
 <section id="projects">
   <div class="section-header fade-in">
-    <div class="section-num" style="color: rgba(230, 200, 150, 0.2);">/02</div>
+    <div class="section-num" style="color: rgba(230, 200, 150, 0.2);">/05</div>
     <h2 class="section-title">Featured Projects</h2>
     <div class="section-subtitle">Curated Case Studies</div>
   </div>
@@ -1408,18 +1335,15 @@
       <div class="project-visual">
         <div class="antique-frame-molding" style="transform: rotate(-2deg);">
           <div class="frame-photo-clean" style="display: flex; align-items: center; justify-content: center; font-size: 3rem; background: #fff5f7;">
-            📱hi <!-- Replace with your Mockup -->
           </div>
         </div>
         <!-- Scrapbook Ephemera -->
         <div class="paperclip" style="top: -15px; right: 20px; transform: rotate(15deg);"></div>
-        <div class="pressed-flower-acc" style="position: absolute; bottom: -10px; left: -10px; font-size: 2rem; transform: rotate(-25deg); z-index: 5;">🥀</div>
       </div>
 
       <!-- Text Right Side -->
       <div class="project-info pattern-ethereal-script">
         <div class="torn-paper-layer" style="top: -4px; right: -4px; bottom: -4px; left: -4px; z-index: -1; transform: rotate(1deg);"></div>
-        <div class="wax-seal burgundy-seal" style="position: absolute; top: 20px; right: 20px; transform: scale(0.7) rotate(15deg);"></div>
         
         <div class="project-category">UX Research • Product Design • Healthcare</div>
         <h3 class="project-title">Alarm Fatigue</h3>
@@ -1428,22 +1352,21 @@
         </p>
         
         <div class="project-actions">
-         <a href="alarm-fatigue.html" class="hero-btn btn-pink">View Case Study</a>
+         <a href="alarm-fatigue.html" class="hero-btn btn-pink" style="margin-top: 30px; display: inline-block;">View Case Study</a>
         </div>
       </div>
-      
     </div>
-
-  </div>
 </section>
 
-<!-- DIVIDER -->
-<div class="elegant-divider fade-in"><div class="divider-bow"></div></div>
+<!-- IMAGE DIVIDER -->
+<div class="image-divider fade-in">
+  <img src="divider.png" alt="Decorative divider"> <img src="divider.png" alt="Decorative divider"> 
+</div>
 
 <!-- CONTACT / CORRESPONDENCE -->
 <section id="contact">
   <div class="section-header fade-in">
-    <div class="section-num" style="color: rgba(230, 200, 150, 0.2);">/03</div>
+    <div class="section-num" style="color: rgba(230, 200, 150, 0.2);">/06</div>
     <h2 class="section-title">Correspondence</h2>
     <div class="section-subtitle">A Graceful Invitation</div>
   </div>
@@ -1453,20 +1376,9 @@
     <div class="contact-visual-canvas fade-in">
       <div class="lace-overlay-bg"></div>
       
-      <!-- Tactile wax seal pinning a pressed flower doodle -->
-      <div class="wax-seal" style="position: absolute; top: -15px; right: -10px; transform: rotate(15deg); z-index: 5;"></div>
-      <div style="position: absolute; top: -10px; right: -5px; font-size: 1.8rem; transform: rotate(45deg); opacity: 0.9; z-index: 4;">🥀</div>
-      
-      <!-- Intimate handwritten note taped down -->
-      <div style="position: absolute; bottom: 20px; left: 20px; background: #fff; padding: 10px 10px 25px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transform: rotate(8deg); z-index: 2; border: 1px solid #eee;">
-        <div class="washi-tape" style="top: -10px; left: 50%; transform: translateX(-50%) rotate(-5deg); width: 40px; background: rgba(240, 220, 225, 0.9);"></div>
-        <span style="font-family: 'Caveat'; color: #6b4c55;">Memories</span>
-      </div>
-
       <!-- The Ornate Mailing Card/Envelope -->
       <div class="contact-envelope-card">
         <div class="envelope-ribbon"></div>
-        <div class="wax-seal" style="position: absolute; top: 50%; left: 40px; transform: translate(-50%, -50%); width: 55px; height: 55px; z-index: 10; box-shadow: 0 6px 15px rgba(0,0,0,0.3), inset 0 0 10px rgba(255,255,255,0.2);"></div>
 
         <div style="font-family: 'Playfair Display'; font-size: 1.2rem; color: var(--text-dark); line-height: 1.6; position: relative; z-index: 2; padding-left: 50px;">
           <div style="font-family: 'Pinyon Script'; font-size: 2.2rem; color: var(--rose); margin-bottom: -5px;">Dearest reader,</div>
@@ -1492,26 +1404,22 @@
         <h3 style="font-family: 'Pinyon Script'; font-size: 3rem; color: var(--text-dark); margin-bottom: 25px;">Let's connect...</h3>
         
         <p style="font-family: 'DM Sans'; font-size: 1.05rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 30px; font-weight: 300;">
-          The best design is crafted with empathy, just like a timeless handwritten letter. I look forward to your correspondence.<br>
+          Thank you for reading! Contact me!<br>
           <span style="font-family: 'Caveat'; color: var(--mauve); font-size: 1.2rem;">With warmth, Celine</span>
         </p>
 
-        <!-- FUNCTIONAL LINKS styled as stationery items -->
         <ul class="contact-links">
           <li class="contact-link-item">
-            <div class="contact-label">Electronic Mail:</div>
-            <!-- Update with your email -->
-            <a href="mailto:hello@celinechen.com" class="contact-value-link">hello@celinechen.com</a>
+            <div class="contact-label">Gmail:</div>
+            <a href="mailto:celine17@uw.edu" class="contact-value-link">celine17@uw.edu</a>
           </li>
           <li class="contact-link-item">
-            <div class="contact-label">Telephone Dispatch:</div>
-            <!-- Update with your phone number -->
-            <a href="tel:+886000000000" class="contact-value-link">+886 (0) 000-0000</a>
+            <div class="contact-label">Telephone Number:</div>
+            <a href="tel:+886000000000" class="contact-value-link">(206) 493-8457</a>
           </li>
           <li class="contact-link-item">
-            <div class="contact-label">Professional Network:</div>
-            <!-- Update with your LinkedIn URL -->
-            <a href="https://linkedin.com/in/celinechen" target="_blank" rel="noopener noreferrer" class="contact-link-block contact-value-link">linkedin.com/in/celinechen</a>
+            <div class="contact-label">LinkedIn:</div>
+            <a href="https://www.linkedin.com/in/celinehsingningchen/" target="_blank" rel="noopener noreferrer" class="contact-link-block contact-value-link">linkedin.com/in/celinehsingningchen</a>
           </li>
         </ul>
       </div>
